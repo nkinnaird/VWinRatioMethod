@@ -1,4 +1,5 @@
-\documentclass[12pt,letterpaper]{report}
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=0.5in]{geometry}
 
 \usepackage[intlimits]{amsmath}
 \usepackage[utf8]{inputenc}
@@ -43,14 +44,14 @@ The necessary inclusion of the VW in the Ratio Method analysis is not immediatel
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=\textwidth]{FFT_3param_allTimes}
+    \includegraphics[width=.8\textwidth]{FFT_3param_allTimes}
     \caption[]{FFT of fit residuals using a 3 parameter ratio function to fit the 60h dataset. The FFT is over all times, \SIrange{30.2}{650}{\micro s}. From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.}
     \label{fig:FFT_3param_allTimes}
 \end{figure}
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=\textwidth]{FFT_3param_earlyTimes}
+    \includegraphics[width=.8\textwidth]{FFT_3param_earlyTimes}
     \caption[]{FFT of fit residuals using a 3 parameter ratio function to fit the 60h dataset. The FFT is over early times, \SIrange{30.2}{60.2}{\micro s}. From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.}
     \label{fig:FFT_3param_earlyTimes}
 \end{figure}
@@ -68,13 +69,13 @@ It is the combination of items \ref{item:FFTpeak} and \ref{item:pVal} that I thi
 
 \subsection*{60h and Endgame Datasets}
 
-The 60h and Endgame datasets run at an n value of 0.108, which just so happens to put the VW frequency at nearly 10 times the \gmtwo frequency, specifically $\omega_{VW} \approx 10.04 \cdot \omega_{a}$ at $t = \infty$. (Remember that in these datasets the CBO frequency and by extension the VW frequency is changing over time, making this whole picture more complicated.) The ratio method, by definition, extracts out the \gmtwo frequency and by extension divides out frequencies which are an even multiple of the \gmtwo frequency. This can be seen in \figref{fig:VW1x-10x}, and the same is shown in a different way in \figref{fig:VWRatioDiff}.
+The 60h and Endgame datasets run at an n value of 0.108, which just so happens to put the VW frequency at nearly 10 times the \gmtwo frequency, specifically $\omega_{VW} \approx 10.04 \cdot \omega_{a}$ at $t = \infty$. (Remember that in these datasets the CBO frequency and by extension the VW frequency is changing over time, making this whole picture more complicated.) The ratio method, by definition, extracts out the \gmtwo frequency and by extension divides out frequencies which are an even multiple of the \gmtwo frequency. This can be seen in \figref{fig:VW1x-10x}, and the same is shown in a different way in \figref{fig:VWRatioDiff}. Because of this, I would expect for there to be no signal for the VW effect in the 60h and Endgame datasets. My only guess for why it still appears is that the VW frequency is changing over the course of a fill, so it still gets into the data in a way that can be seen. 
 
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
-    \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitdues with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC "fill." There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away, while for odd frequencies it does not. It should be noted here that it doesn't matter that the VW effect is a "high frequency effect,", simply that it is at an even multiple of \wa.}
+    \includegraphics[width=.8\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
+    \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitdues with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC "fill." There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not. It should be noted here that it doesn't matter that the VW effect is a "high frequency effect,", simply that it is at an even multiple of \wa.}
     \label{fig:VW1x-10x}
 \end{figure}
 
@@ -82,10 +83,46 @@ The 60h and Endgame datasets run at an n value of 0.108, which just so happens t
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=\textwidth]{VWRatioDiff}
+    \includegraphics[width=.8\textwidth]{VWRatioDiff}
     \caption[]{Plotted is the difference in the maximum value of the ratio with and without a VW function included, as a function of both the amplitude of the VW effect and the VW frequency in units of the \gmtwo frequency, in a toy Monte-Carlo simulation. Note that this is not $\boldsymbol{R}$ the frequency fit parameter, but the actual value of the ratio fit function. The difference reaches a minimum for even multiples of the \gmtwo frequency, where the VW effect divides out almost entirely. The $n = 0.108$ datasets, including the 60h and Endgame datasets, live at the bottom center of this plot, marked by a red circle, where the VW frequency is nearly equal to 10 times the \gmtwo frequency, and the difference in the ratio is approximately \SI{5e-6}{} at 30 $\mu s$. Plot courtesy of James Mott.}
     \label{fig:VWRatioDiff}
 \end{figure}
+
+
+My plan would then be to include the VW in the ratio fit, with those VW parameters to which the ratio fit can't fit effectively, the frequency, lifetime, and sometimes phase, fixed from a T method fit, and the amplitude allowed to float. What then happens strangely enough however is that the VW amplitude in the ratio fit floats to unphysically high values, as seen in \figref{fig:ratioFit_highVWamp} where the amplitude is 0.2043 compared to the T method VW fitted amplitude in \figref{fig:TmethodFit_lowVWamp} at 0.003297, a factor of 62 increase. This factor difference varies wildly from seed to seed, but always remains very high. (Here it can be seen that the VW phase is floated in the fits and varies between the two, probably influencing the final fitted values.) If I include the VW and fix all parameters to the results from the T method fit, then what happens is R changes be nothing (less than 1 ppb) and the VW peak is unchanged. It seems the fit really does prefer such a high amplitude, which I still don't understand.
+
+
+\begin{figure}[]
+\centering
+    \begin{subfigure}[]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{ratioFit_highVWamp}
+        \caption{Ratio fit results with VW included of 60h dataset. Same file as above.}
+    \label{fig:ratioFit_highVWamp}
+    \end{subfigure}% %you need this % here to add spacing between subfigures
+    \vspace{1cm}
+    \begin{subfigure}[]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{TmethodFit_lowVWamp}
+        \caption{T method fit results of 60h dataset. Same file as above.}
+    \label{fig:TmethodFit_lowVWamp}
+    \end{subfigure}
+\caption[]{}
+\end{figure}
+
+
+One thing I considered was whether the ratio method and fit really does somehow artificially raise the VW amplitude. Seems very unlikely but I made a Toy MC with a large VW effect and checked what came out, the first results of which are shown in \figref{fig:VW1x-10x}. That figure used the results from a 3 parameter ratio function, or 
+    \begin{align} \label{eq:threeparamratio}
+        R(t) \approx A \cos(\omega_{a}t),
+    \end{align}
+whereas I'm really fitting with the function
+    \begin{gather}
+        R(t) = \frac{2f(t) - f_{+}(t) - f_{-}(t)}{2f(t) + f_{+}(t) + f_{-}(t)}, \\
+        f_{\pm}(t) = f(t \pm T_{a}/2), \\
+        f(t) = V(t) \cdot (1 + A \cdot \cos(\omega_{a}t + \phi)),
+    \label{eq:fullratiofunction}
+    \end{gather}
+or as I call it the full ratio function, with $V(t)$ being the VW effect, and without other background terms which are unnecessary in the Toy MC. Fitting with this function yields the results shown in \figref{fig:FittedAVW_FullRatioFunc}. As shown, the fitted VW amplitude dies away at even frequencies for the 3 parameter ratio function, however there is some interesting behaviour with the results from the full ratio function. The results do in fact make perfect sense when considering Equation~\ref{eq:fullratiofunction} more carefully. What $f(t)$ represents in that function is the five parameter function, barring the $N_{0}$ and $\tau_{\mu}$ terms which divide out. In that case the fitted amplitude between the five paramter function and the T method function should be the exact same. This is the case between the red and blue points until the frequency gets very close to 10 times \wa. As seen the fit becomes unstable, with largely differing amplitudes in some cases with large error bars. There are also some points with values different from the real value, and with small, inconsistent errors. What is happening here makes sense in that the VW effect in the ratio has almost completely divided out, but yet I am trying to fit it with a function where the value of $A_{VW}$ does not particularly matter. In essence I believe I am using a term in the fit function which isn't particularly well motivated. 
 
 
 \begin{figure}[]
@@ -93,20 +130,31 @@ The 60h and Endgame datasets run at an n value of 0.108, which just so happens t
     \begin{subfigure}[]{0.46\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw-9x-10x}
-        \caption{}
+        \caption{$9\times$ to $11\times$ \wa.}
     \end{subfigure}% %you need this % here to add spacing between subfigures
     \hspace{1cm}
     \begin{subfigure}[]{0.46\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw-10x}
-        \caption{}
+        \caption{$9.8\times$ to $10.2\times$ \wa.}
     \end{subfigure}
-\caption[]{\textbf{update pictures as needed}}
-\label{fig:}
+\caption[]{Fitted VW amplitude as a function of frequency and with different types of fit functions.}
+\label{fig:FittedAVW_FullRatioFunc}
 \end{figure}
 
 
-So the first question is posed as to why ... 
+
+If my fit results to the real data returned values with large error bars consistent with 0, or consistent with the T method results, then I believe there wouldn't be a problem, and I could do one or the other. Conceptually, I think the `right' answer would be that the T method values are right, and I should just fix the values in the ratio method to them and call it a day. However, going back up to a point in an earlier paragraph, this doesn't improve the fit and the VW signal still appears in the data unchanged. So at the end of the day I have this problem, which seems contradictory in that I don't think I should be able to see the VW but can, and that my fit shouldn't prefer a specific amplitude but does, and that amplitude is an unphyisically large value. 
+
+
+I was going to leave it out in the 60h dataset and call it a day, until the Endgame results showed a much larger change in the p value that seems un-ignorable.
+
+
+Probably show said change or picture here or something - look up these results again
+
+
+
+
 
 
 
@@ -122,13 +170,8 @@ So the first question is posed as to why ...
 
 
 
--even frequency multiple
--changing frequency though
--reduction in signal
--possibly improper fit function
 
--contradictions
-
+-contradctions
 
 -unstable fit start scans and correlations
 
