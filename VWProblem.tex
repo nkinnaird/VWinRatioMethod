@@ -67,7 +67,7 @@ The smallness of the VW signal in the ratio method analysis is the first of the 
 It is the combination of items \ref{item:FFTpeak} and \ref{item:pVal} that I think are the real suggestions that I should be including the VW in the ratio fits. A couple of confusing things end up arising though, both around the idea that I should need to include the VW and what I see when I do so.
 
 
-\subsection*{60h and Endgame Datasets}
+\subsection*{60h and Endgame Datasets - An even multiple}
 
 The 60h and Endgame datasets run at an n value of 0.108, which just so happens to put the VW frequency at nearly 10 times the \gmtwo frequency, specifically $\omega_{VW} \approx 10.04 \cdot \omega_{a}$ at $t = \infty$. (Remember that in these datasets the CBO frequency and by extension the VW frequency is changing over time, making this whole picture more complicated.) The ratio method, by definition, extracts out the \gmtwo frequency and by extension divides out frequencies which are an even multiple of the \gmtwo frequency. This can be seen in \figref{fig:VW1x-10x}, and the same is shown in a different way in \figref{fig:VWRatioDiff}. Because of this, I would expect for there to be no signal for the VW effect in the 60h and Endgame datasets. My only guess for why it still appears is that the VW frequency is changing over the course of a fill, so it still gets into the data in a way that can be seen. 
 
@@ -75,7 +75,7 @@ The 60h and Endgame datasets run at an n value of 0.108, which just so happens t
 \begin{figure}[]
     \centering
     \includegraphics[width=.8\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
-    \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitdues with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC "fill." There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not. It should be noted here that it doesn't matter that the VW effect is a "high frequency effect,", simply that it is at an even multiple of \wa.}
+    \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitdues with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC "fill." There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not. It should be noted here that it doesn't matter that the VW effect is a "high frequency effect,", simply that it is at an even multiple of \wa. \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}}
     \label{fig:VW1x-10x}
 \end{figure}
 
@@ -97,17 +97,17 @@ My plan would then be to include the VW in the ratio fit, with those VW paramete
     \begin{subfigure}[]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{ratioFit_highVWamp}
-        \caption{Ratio fit results with VW included of 60h dataset. Same file as above.}
+        \caption{Ratio fit results with VW included of 60h dataset.}
     \label{fig:ratioFit_highVWamp}
-    \end{subfigure}% %you need this % here to add spacing between subfigures
+    \end{subfigure}%
     \vspace{1cm}
     \begin{subfigure}[]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{TmethodFit_lowVWamp}
-        \caption{T method fit results of 60h dataset. Same file as above.}
+        \caption{T method fit results of 60h dataset.}
     \label{fig:TmethodFit_lowVWamp}
     \end{subfigure}
-\caption[]{}
+\caption[]{\texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}}
 \end{figure}
 
 
@@ -138,7 +138,7 @@ or as I call it the full ratio function, with $V(t)$ being the VW effect, and wi
         \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw-10x}
         \caption{$9.8\times$ to $10.2\times$ \wa.}
     \end{subfigure}
-\caption[]{Fitted VW amplitude as a function of frequency and with different types of fit functions.}
+\caption[]{Fitted VW amplitude as a function of frequency and with different types of fit functions. \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioStyleFunc}}
 \label{fig:FittedAVW_FullRatioFunc}
 \end{figure}
 
@@ -157,15 +157,57 @@ Probably show said change or picture here or something - look up these results a
 
 
 
+\subsection*{9d Dataset - a different problem}
+
+
+While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, in the 9d the frequency is closer to an odd multiple, or $\omega_{VW} \approx 8.87 \cdot \omega_{a}$ at $t = \infty$. With what I've shown so far, I expect the VW signal to be easily fittable with an amplitude equal to that from the T method results. Looking at per calo fit results in \figref{fig:9d-PerCalo-VW}, the VW phases and amplitudes are consistent between the T method and ratio method results. As shown there are no observable differences. When I look at the fits to the sum of the calorimeter data however, I see a systematically smaller VW amplitude in the ratio fit results as compared to the T method results. This is true for all random seeds as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. While I expect a reduction in the VW amplitude from per calo fits to the calorimeter sum fit, as the phases go from 0-2$\pi$ around the ring, I still expect the amplitudes to be consistent between the T method and ratio method. If I take calorimeters adjacent to each other around the ring versus calorimeters separated from each other, then I see the behaviour. So what seems to be happening is that there is a cancellation when adding the calorimeters together in the ratio method that doesn't occur in the T method. That is something I don't understand, and can't come up with a reason why that should happen. I'm not sure if this is at all related to the previously discussed problem or not, whether it's another symptom or something else strange. 
 
 
 
-\subsection*{9d Dataset}
+\begin{figure}[]
+\centering
+    \begin{subfigure}[]{0.46\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Phases}
+        \caption{VW phases per calo in the 9d dataset.}
+    \end{subfigure}% %you need this % here to add spacing between subfigures
+    \begin{subfigure}[]{0.46\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Amps}
+        \caption{VW amplitudes per calo in the 9d dataset.}
+    \end{subfigure}
+\caption[]{Red points are T method results and black points are ratio method results. In the ratio fits, the VW frequencies and lifetimes are fixed to those from the T method results. \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/SingleIteration/temptests/CaloFits-VW-w-tau-fixed}}
+\label{fig:9d-PerCalo-VW}
+\end{figure}
+
+
+\begin{figure}[]
+    \centering
+    \includegraphics[width=0.7\textwidth]{vw-fixed-w-tau-9d-randseeds}
+    \caption[]{VW amplitudes as a function of random seed for T method fits compared to ratio method fits. T method fits are in red and ratio fits are in black. The error bars are smaller on the ratio fits because the VW frequencies and lifetimes are fixed to those from the T method fits. There is a consistently smaller VW amplitude in the ratio fits as compared to the T method fits. \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/RandomSeeds/tests\_with\_VW/fixed-vw-w-tau}}
+    \label{fig:vw-fixed-w-tau-9d-randseeds}
+\end{figure}
 
 
 
 \subsection*{Correlations and fit start scans}
 
+
+
+
+
+\subsection*{Thoughts and plan going forward}
+
+
+-focus on the first problem and before that is fixed don't worry about the other stuff - stay focused
+
+
+-could it be a randomization thing
+
+-is the p value rise in the Endgame dataset more a function of the beam relaxation/ad hoc gain thing as opposed to the exclusion of the VW?
+
+
+-review no time randomization fitting checks, don't think I ever checked per calo results 
 
 
 
@@ -176,11 +218,8 @@ Probably show said change or picture here or something - look up these results a
 -unstable fit start scans and correlations
 
 
-9d
--reduced amplitude in ratio method compared to t method
 
 
--keep in mind which parameters are fixed and which are not in the various fits and fit start time scans
 
 
 
