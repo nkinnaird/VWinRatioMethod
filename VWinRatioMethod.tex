@@ -48,6 +48,7 @@ This note details the handling of the vertical waist (VW) effect in the Ratio Me
 \end{abstract}
 
 
+\section{Introduction}
 
 The necessary inclusion of the VW in the Ratio Method analysis is not immediately apparent, as shown by \figref{fig:FFT_3param_allTimes}. (Incidentally this is also true for the CBO and other effects.) Compared to the FFT of the fit residuals of a five parameter function fit to the data, no peaks rise significantly above the noise. When looking at the FFT of the fit residuals for early times however, as in \figref{fig:FFT_3param_earlyTimes}, a small VW peak can be seen. (As well as the larger CBO peak.) It should be noted here that this small VW peak does not appear for every random seed. The time randomization of the data means that sometimes this VW peak is indistinguishable within the noise. 
 
@@ -79,7 +80,7 @@ The smallness of the VW signal in the ratio method analysis is the first of the 
 It is the combination of items \ref{item:FFTpeak} and \ref{item:pVal} that I think are the real suggestions that I should be including the VW in the ratio fits. A couple of confusing things end up arising though, both around the idea that I should need to include the VW and what I see when I do so.
 
 
-\subsection*{60h and Endgame Datasets - An even multiple}
+\section{60h and Endgame Datasets - An even multiple}
 
 The 60h and Endgame datasets run at an n value of 0.108, which just so happens to put the VW frequency at nearly 10 times the \gmtwo frequency, specifically $\omega_{VW} \approx 10.04 \cdot \omega_{a}$ at $t = \infty$. (Remember that in these datasets the CBO frequency and by extension the VW frequency is changing over time, making this whole picture more complicated.) The ratio method, by definition, extracts out the \gmtwo frequency and by extension divides out frequencies which are an even multiple of the \gmtwo frequency. This can be seen in \figref{fig:VW1x-10x}, and the same is shown in a different way in \figref{fig:VWRatioDiff}. Because of this, I would expect for there to be no signal for the VW effect in the 60h and Endgame datasets. My only guess for why it still appears is that the VW frequency is changing over the course of a fill, so it still gets into the data in a way that can be seen. 
 
@@ -169,7 +170,7 @@ Probably show said change or picture here or something - look up these results a
 
 
 
-\subsection*{9d Dataset - a different problem}
+\section{9d Dataset - a different problem}
 
 
 While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, in the 9d the frequency is closer to an odd multiple, or $\omega_{VW} \approx 8.87 \cdot \omega_{a}$ at $t = \infty$. With what I've shown so far, I expect the VW signal to be easily fittable with an amplitude equal to that from the T method results. Looking at per calo fit results in \figref{fig:9d-PerCalo-VW}, the VW phases and amplitudes are consistent between the T method and ratio method results. As shown there are no observable differences. When I look at the fits to the sum of the calorimeter data however, I see a systematically smaller VW amplitude in the ratio fit results as compared to the T method results. This is true for all random seeds as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. While I expect a reduction in the VW amplitude from per calo fits to the calorimeter sum fit, as the phases go from 0-2$\pi$ around the ring, I still expect the amplitudes to be consistent between the T method and ratio method. If I take calorimeters adjacent to each other around the ring versus calorimeters separated from each other, then I see the behaviour. So what seems to be happening is that there is a cancellation when adding the calorimeters together in the ratio method that doesn't occur in the T method. That is something I don't understand, and can't come up with a reason why that should happen. I'm not sure if this is at all related to the previously discussed problem or not, whether it's another symptom or something else strange. 
@@ -202,12 +203,12 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 % \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/RandomSeeds/tests\_with\_VW/fixed-vw-w-tau}
 
 
-\subsection*{Correlations and fit start scans}
+\section{Correlations and fit start scans}
 
 
 
 
-\subsection*{Randomizing out the effect...}
+\section{Randomizing out the effect...}
 
 
 
@@ -224,3 +225,14 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 
 
 \end{document}
+
+
+\begin{bibliography}
+
+\bibitem{}
+
+
+\end{bibliography}
+
+
+
