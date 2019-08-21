@@ -206,12 +206,85 @@ where $V(t)$ is the vertical waist effect. In the latter, $f(t)$ represents the 
 
 
 
-Therefore a  new mc was made by james...
+Therefore a more data-like Toy MC simulation was built which included the FR effect, with the ability to turn off various parts of the simulation. It was found that when the FR was turned off the ratio data was consistent with 0, while when the FR was turned on, the VW effect reappeared with a larger amplitude and a strange beating structure, \figref{fig:JamesMC_VW_FR}. A simpler Mathematica simulation revealed the same behavior with the same beating structure, \figref{fig:MathematicaMC_VW_FR}. So something in the way that the Ratio Method was interacting with the FR was causing these large amplitudes. Performing the Ratio Method analysis, but this time with varying time-shifts, revealed the resonance very clearly in both the data and the Mathematica simulation, \figref{fig:resonance}. As shown the running point for 60h and Endgame datasets sits on this resonance, stemming from the fact that $f_{VW} \approx 10 \cdot f_{a}$. This begs the questions as to what exactly is the source of this resonance, and how exactly does the Ratio Method introduce it in combination with the FR.
+
+
+\begin{figure}[]
+\centering
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{JamesMC_noFR}
+        \caption{Without the FR effect included.}
+    \end{subfigure}%
+
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{JamesMC_withFR}
+        \caption{With the FR effect included.}
+    \end{subfigure}
+\caption[]{Ratio data with and without the FR effect from a Toy MC simulation, with a VW effect with a frequency $f_{VW} = 10 \cdot \omega_{a}$. The \gmtwo wiggle has been removed, and the lifetime of the VW was set to a large number. The top plot shows ratio data which is consistent with 0 after all effects have been removed and the VW has divided out. The bottom plot shows ratio data inconsistent with 0, with oscillations at the VW frequency, and an interesting beating structure.}
+\label{fig:JamesMC_VW_FR}
+\end{figure}
+
+
+\begin{figure}[]
+\centering
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{MathematicaMC_functionExample}
+        \caption{The input functions used, blue for the VW and orange for a FR effect.}
+    \end{subfigure}%
+    \vspace{1cm}
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{MathematicaMC_withFR}
+        \caption{The ratio value with the FR effect include. Oscillations with large amplitudes at the VW frequency can be seen with the same strange beating structure.}
+    \end{subfigure}
+\caption[]{Results from a simple Mathematica simulation with a VW and FR effect included.}
+\label{fig:MathematicaMC_VW_FR}
+\end{figure}
+
+
+\begin{figure}[]
+\centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{AvwResonance_60h}
+        \caption{Fitted VW amplitude as a function of the choice of \gmtwo period offset in units of thousands of ppm for the 60h dataset.}
+    \end{subfigure}%
+    \vspace{1cm}
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{AvwResonance_Mathematica}
+        \caption{Fitted VW amplitude as a function of the choice of \gmtwo period in the Mathematica simulation.}
+    \end{subfigure}
+\caption[]{The amplitude of the fitted VW, in both the data (top) and Mathematic simulation (bottom), as a function of the time-shift or \gmtwo period over 2, $T_{a}/2$. In both the resonace can be clearly seen where the VW amplitude blows up from it's real value.}
+\label{fig:resonance}
+\end{figure}
+
+
+-talk about James plots here
 
 
 
 
-% The value of R changes on the order of \SIrange{30}{60}{ppb} depending on the dataset, which parameters are fixed, and what the random seed is.
+% \begin{figure}[]
+% \centering
+%     \begin{subfigure}[t]{0.7\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{}
+%         \caption{}
+%     \end{subfigure}%
+
+%     \begin{subfigure}[t]{0.7\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{}
+%         \caption{}
+%     \end{subfigure}
+% \caption[]{}
+% \label{}
+% \end{figure}
+
 
 
 
