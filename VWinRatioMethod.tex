@@ -53,11 +53,12 @@ This note details the handling of the vertical waist (VW) effect in the Ratio Me
 
 \section{Introduction}
 
-In the Ratio Method, effects with frequencies which are an even multiple of \wa divide out completely, as shown in Figures~\ref{fig:VW1x-10x} and \ref{fig:VWRatioDiff}. The VW frequency is given by
+In the Ratio Method, effects with frequencies which are an even multiple of \wa divide out completely, as shown in \figref{fig:ToyMCVW}. The VW frequency is given by
     \begin{align} \label{eq:VWfreqKappa}
-        \omega_{VW}(t) = 2\pi \Big(f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t)\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t))-1}\Big),
+        f_{VW}(t) = f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t)\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t))-1},
     \end{align}
-where the time-dependence of the VW effect is included and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table \ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets.
+where the time-dependence of the VW effect is included and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table \ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit.
+
 
 \begin{table}[]
 \centering
@@ -79,47 +80,73 @@ where the time-dependence of the VW effect is included and the fit parameter is 
 \end{table}
 
 
-\begin{figure}[]
-    \centering
-    \includegraphics[width=.8\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
-    \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitudes with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC ``fill.'' There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not.}
-    \label{fig:VW1x-10x}
-\end{figure}
-%  \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}
+% \begin{figure}[]
+%     \centering
+%     \includegraphics[width=.8\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
+%     \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitudes with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC ``fill.'' There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not.}
+%     \label{fig:VW1x-10x}
+% \end{figure}
+% %  \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}
+
+
+% \begin{figure}[]
+%     \centering
+%     \includegraphics[width=.8\textwidth]{VWRatioDiff}
+%     \caption[]{Plotted is the difference in the maximum value of the ratio with and without a VW function included, as a function of both the amplitude of the VW effect and the VW frequency in units of the \gmtwo frequency, in a toy Monte-Carlo simulation. Note that this is not $\boldsymbol{R}$ the frequency fit parameter, but the actual value of the ratio fit function. The difference reaches a minimum for even multiples of the \gmtwo frequency, where the VW effect divides out almost entirely. The $n = 0.108$ datasets, including the 60h and Endgame datasets, live at the bottom center of this plot, marked by a red circle, where the VW frequency is nearly equal to 10 times the \gmtwo frequency, and the difference in the ratio is approximately \SI{5e-6}{} at 30 $\mu s$. Plot courtesy of James Mott.}
+%     \label{fig:VWRatioDiff}
+% \end{figure}
 
 
 \begin{figure}[]
-    \centering
-    \includegraphics[width=.8\textwidth]{VWRatioDiff}
-    \caption[]{Plotted is the difference in the maximum value of the ratio with and without a VW function included, as a function of both the amplitude of the VW effect and the VW frequency in units of the \gmtwo frequency, in a toy Monte-Carlo simulation. Note that this is not $\boldsymbol{R}$ the frequency fit parameter, but the actual value of the ratio fit function. The difference reaches a minimum for even multiples of the \gmtwo frequency, where the VW effect divides out almost entirely. The $n = 0.108$ datasets, including the 60h and Endgame datasets, live at the bottom center of this plot, marked by a red circle, where the VW frequency is nearly equal to 10 times the \gmtwo frequency, and the difference in the ratio is approximately \SI{5e-6}{} at 30 $\mu s$. Plot courtesy of James Mott.}
-    \label{fig:VWRatioDiff}
+\centering
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x} % \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}
+        \caption{Fitted VW amplitude with a five parameter function in red and a three parameter ratio function in black. The input amplitude was 0.05. The slight fall off of the red points is due to the high frequencies interacting with the bin widths; performing an integral fit removes this trend.}
+    \end{subfigure}%
+
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{VWRatioDiff}
+        \caption{The difference in the maximum value of the ratio (not the fit parameter \textbf{R}), as a function of VW frequency and amplitude.The difference in the ratio is approximately \SI{5e-6}{} at \mus{30}.}
+    \end{subfigure}
+\caption[]{Two separate Toy MC simulations showing the division of a VW effect as a function of it's frequency in units of \wa. For even multiple frequencies the effect dies away while for odd multiples it is preserved.}
+\label{fig:ToyMCVW}
 \end{figure}
 
 
+
+\begin{figure}[]
+\centering
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FFT_3param_allTimes} % From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
+        \caption{All times, \SIrange{30.2}{650}{\micro s}.}
+    \end{subfigure}%
+
+    \begin{subfigure}[t]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{FFT_3param_earlyTimes} % From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
+        \caption{Early times, \SIrange{30.2}{60.2}{\micro s}.}
+    \end{subfigure}
+\caption[]{FFT of fit residuals using a 3 parameter ratio function to fit the 60h dataset. Peaks can be seen when looking at fit residuals over early times as opposed to all times. The size of the VW peak greatly depends on the choice of random seed. The CBO peak can also be seen.}
+\label{fig:FFT_3param}
+\end{figure}
+
+
+\begin{figure}[]
+    \centering
+    \includegraphics[width=.7\textwidth]{Pvalue_Endgame}
+    \caption[]{P value vs fit start time for the Endgame dataset. A sharp rise can be seen at early times. A similar trend, though less severe, can be seen for the 60h dataset.}
+    \label{fig:Pvalue_Endgame}
+\end{figure}
 
 
 \clearpage
 
 
 
-The necessary inclusion of the VW in the Ratio Method analysis is not immediately apparent, as shown by \figref{fig:FFT_3param_allTimes}. (Incidentally this is also true for the CBO and other effects.) Compared to the FFT of the fit residuals of a five parameter function fit to the data, no peaks rise significantly above the noise. When looking at the FFT of the fit residuals for early times however, as in \figref{fig:FFT_3param_earlyTimes}, a small VW peak can be seen. (As well as the larger CBO peak.) It should be noted here that this small VW peak does not appear for every random seed. The time randomization of the data means that sometimes this VW peak is indistinguishable within the noise. 
 
-
-\begin{figure}[]
-    \centering
-    \includegraphics[width=.8\textwidth]{FFT_3param_allTimes}
-    \caption[]{FFT of fit residuals using a 3 parameter ratio function to fit the 60h dataset. The FFT is over all times, \SIrange{30.2}{650}{\micro s}.}
-    \label{fig:FFT_3param_allTimes}
-\end{figure}
-% From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
-
-\begin{figure}[]
-    \centering
-    \includegraphics[width=.8\textwidth]{FFT_3param_earlyTimes}
-    \caption[]{FFT of fit residuals using a 3 parameter ratio function to fit the 60h dataset. The FFT is over early times, \SIrange{30.2}{60.2}{\micro s}.}
-    \label{fig:FFT_3param_earlyTimes}
-\end{figure}
-% From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
 
 
 The smallness of the VW signal in the ratio method analysis is the first of the problems in including it in the fit. First one might ask however whether it should be included in the fit at all. There are a couple of reasons why I think it should probably be included:
@@ -267,9 +294,23 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 % \end{figure}
 
 
+% \begin{figure}[]
+% \centering
+%     \begin{subfigure}[t]{0.7\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{}
+%         \caption{}
+%     \end{subfigure}%
+
+%     \begin{subfigure}[t]{0.7\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{}
+%         \caption{}
+%     \end{subfigure}
+% \caption[]{}
+% \label{}
+% \end{figure}
+
+
 \end{document}
-
-
-
-
 
