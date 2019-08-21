@@ -24,6 +24,10 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{multirow}
+
 \usepackage[sorting=none]{biblatex}
 \addbibresource{shortBib.bib}
 
@@ -33,6 +37,12 @@
 \newcommand{\mus}[1]{\SI{#1}{\micro s}\xspace}
 \def\gmtwo{$g-2$\xspace}
 \def\wa{$\omega_{a}$\xspace}
+
+\newcolumntype{L}{>{\centering}D{.}{.}{1,3}} % define a column type L with specific spacing before and after the decimal point
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}} % define a new command thead which centers table headers in the first row and works with the rest of the table environment
+\makeatletter
+\newcolumntype{B}{>{\DC@{.}{.}{1,3}}c<{\DC@end}} % define a column that's bold and does the above
+\makeatother
 
 
 \graphicspath{{Figures/}}
@@ -334,7 +344,44 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 
 \section{Randomizing out the effect...}
 
-\cite{wa_presentation}
+2fy randomization results are shonw in \cite{wa_presentation}
+
+
+effects on R...
+statisitical error increases by.. 
+
+
+\begin{table}[]
+\centering
+\small
+\setlength\tabcolsep{10pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular*}{1\linewidth}{@{\extracolsep{\fill}}lcccccB}
+  \hline
+    \multicolumn{7}{c}{\textbf{R Comparison with and without Randomization}} \\
+  \hline\hline
+    & & \multicolumn{2}{c}{With VW} & \multicolumn{2}{c}{Without VW} & \\
+    & & \multicolumn{2}{c}{No Randomization} & \multicolumn{2}{c}{With Randomization} & \\
+  \hline\hline
+    Dataset & Fit Method & Mean & RMS & Mean & RMS & \thead{$\Delta R$} \\
+  \hline
+    \multirow{2}{*}{60H} & T & $-20.345$ & $0.143$ & $-20.294$ & $0.298$ & 0.051 \\
+                         & R & $-20.527$ & $0.216$ & $-20.480$ & $0.357$ & 0.047 \\
+  \hline
+    \multirow{2}{*}{9d} & T & $-17.278$ & $0.065$ & $-17.280$ & $0.126$ & -0.002 \\
+                        & R & $-17.355$ & $0.087$ & $-17.374$ & $0.133$ & -0.019 \\
+  \hline
+    \multirow{2}{*}{Endgame} & T & $-17.743$ & $0.096$ & $-17.684$ & $0.186$ & 0.059 \\
+                             & R & $-17.747$ & $0.125$ & $-17.688$ & $0.192$ & 0.059 \\                                              
+  \hline
+\end{tabular*}
+\caption[]{Means and RMS' of R values for 50 different random seeds for three of the Run~1 datasets, without the $f_{VW}$ randomization and including the VW in the fit, versus with the $f_{VW}$ randomization and the VW terms excluded from the fit.}
+\label{tab:fVW_Randomization}
+\end{table}
+
+
+
+
 
 
 
