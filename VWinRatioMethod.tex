@@ -55,9 +55,10 @@ This note details the handling of the vertical waist (VW) effect in the Ratio Me
 
 In the Ratio Method, effects with frequencies which are an even multiple of \wa divide out completely, as shown in \figref{fig:ToyMCVW}. The VW frequency is given by
     \begin{align} \label{eq:VWfreqKappa}
-        f_{VW}(t) = f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t)\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo}(t))-1},
+        f_{VW} &= f_{c} - 2 \cdot f_{y}, \\
+               &= f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo})-1},
     \end{align}
-where the time-dependence of the VW effect is included and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table \ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit.
+where $f_{c}$ is the cyclotron frequency, $f_{y}$ is the vertical betatron frequency, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table \ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets.
 
 
 \begin{table}[]
@@ -142,26 +143,19 @@ where the time-dependence of the VW effect is included and the fit parameter is 
 \end{figure}
 
 
+
+\section{On a resonance in the 60h and Endgame datasets}
+
+
+
+
+
+% The value of R changes on the order of \SIrange{30}{60}{ppb} depending on the dataset, which parameters are fixed, and what the random seed is.
+
+
+
+
 \clearpage
-
-
-
-
-
-
-The smallness of the VW signal in the ratio method analysis is the first of the problems in including it in the fit. First one might ask however whether it should be included in the fit at all. There are a couple of reasons why I think it should probably be included:
-\begin{enumerate}
-	\item\label{item:FFTpeak}{A peak in the FFT of the fit residuals can be seen.}
-	\item\label{item:VWamp}{When the amplitude of the VW is allowed to float (with some or all of the others parameters fixed, whatever configuration is necessary to get a converging fit), then the VW amplitude converges to a non-zero value.}
-	\item\label{item:pVal}{The p value of the fit improves when including the VW, on the order of 8\% for the 60h dataset, and on the order of 40\% for the Endgame dataset. This is reflected in a fit start scan of the p value, which shows a rise for the first \SIrange{20}{30}{\micro s} of the fit or so.}
-	\item\label{item:Rchange}{The value of R changes on the order of \SIrange{30}{60}{ppb} depending on the dataset, which parameters are fixed, and what the random seed is.}
-\end{enumerate}
-It is the combination of items \ref{item:FFTpeak} and \ref{item:pVal} that I think are the real suggestions that I should be including the VW in the ratio fits. A couple of confusing things end up arising though, both around the idea that I should need to include the VW and what I see when I do so.
-
-
-\section{60h and Endgame Datasets - An even multiple}
-
-The 60h and Endgame datasets run at an n value of 0.108, which just so happens to put the VW frequency at nearly 10 times the \gmtwo frequency, specifically $\omega_{VW} \approx 10.04 \cdot \omega_{a}$ at $t = \infty$. (Remember that in these datasets the CBO frequency and by extension the VW frequency is changing over time, making this whole picture more complicated.) The ratio method, by definition, extracts out the \gmtwo frequency and by extension divides out frequencies which are an even multiple of the \gmtwo frequency. This can be seen in \figref{fig:VW1x-10x}, and the same is shown in a different way in \figref{fig:VWRatioDiff}. Because of this, I would expect for there to be no signal for the VW effect in the 60h and Endgame datasets. My only guess for why it still appears is that the VW frequency is changing over the course of a fill, so it still gets into the data in a way that can be seen. 
 
 
 
