@@ -68,7 +68,7 @@ In the Ratio Method, or R-Method, effects with frequencies which are an even mul
         f_{VW} &= f_{c} - 2 \cdot f_{y}, \\
                &= f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo})-1},
     \end{align}
-where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertical betatron frequency with $n$ the quad n value, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table \ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets.
+where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertical betatron frequency with $n$ the quad n value, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table~\ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets.
 
 
 \begin{table}[]
@@ -439,7 +439,7 @@ Currently the best guess for the source of this flattening out is that
 \label{sec:randomization}
 
 
-The standard technique to remove the FR from the data as much as possible, is to not only set the bin width of the histograms as close to $T_{c}$ as possible, at 149.2 ns, but the times of the hits are randomized by $\pm T_{c}/2$. In order to remove the effects of the VW described in this document, the same strategy is used, where the times are also randomized by $\pm T_{VW}/2$. In doing so, the VW is effectively removed from the data as shown in \figref{fig:FFT_fiveParam_fVWRand}. Any attempts to fit VW parameters are unsuccessful as the VW has been successfully removed from the data. Fit start scans are also repaired as in \figref{fig:Pval_Endgame_withVWRand}. The randomization of the data by $\pm T_{VW}/2$ decreases the asymmetry $A$ of the \gmtwo wiggle by 0.006 in the 60h and Endgame datasets, and 0.0075 in the 9d dataset, corresponding to increases in the statistical error on R by $10.7 - 22.7$ ppb, where the increase can be determined as\footnote{The statistical error increase does not always exactly correspond to the change in A, but it's close, presumably do a change in statistics and fit parameter correlations.}
+The standard technique to remove the FR from the data as much as possible, is to not only set the bin width of the histograms as close to $T_{c}$ as possible, at 149.2 ns, but the times of the hits are randomized by $\pm T_{c}/2$\footnote{This randomization is done in order to remove the ``R-Wave'' effect seen in the per calorimeter results \cite{Rwave}.}. In order to remove the effects of the VW described in this document, the same strategy is used, where the times are also randomized by $\pm T_{VW}/2$. In doing so, the VW is effectively removed from the data as shown in \figref{fig:FFT_fiveParam_fVWRand}. Any attempts to fit VW parameters are unsuccessful as the VW has been successfully removed from the data. Fit start scans are also repaired as in \figref{fig:Pval_Endgame_withVWRand}. The randomization of the data by $\pm T_{VW}/2$ decreases the asymmetry $A$ of the \gmtwo wiggle by 0.006 in the 60h and Endgame datasets, and 0.0075 in the 9d dataset, corresponding to increases in the statistical error on R by $10.7 - 22.7$ ppb, where the increase can be determined as\footnote{The statistical error increase does not always exactly correspond to the change in A, but it's close, presumably do a change in statistics and fit parameter correlations.}
     \begin{align}
         \sigma_{R} \rightarrow \frac{ A_{\text{randomized}}}{A}\sigma_{R}.
     \end{align}
@@ -486,9 +486,7 @@ See Table~\ref{tab:A_change}. For the Run~1 datasets this statistical error incr
 \end{table}
 
 
-For final checks...
-
-
+For final checks results for the R values for the different datasets were compared without the VW randomization and including the VW terms in the fit, versus with the VW randomization and without the VW terms in the fit. The results are compiled in Table~\ref{tab:fVW_Randomization_Rvalues}. The change in the mean values of R were on the order of 60 ppb or less, and very much within the RMS of each individual distribution. Similarly, a check was made for any residual R-Wave in the data by comparing per calorimeter results with the two types of fits for the 9d dataset as shown in \figref{fig:residualRWaveCheck}, and none was found. The results shown here show perfect consistency with the results before and after the additional randomization, and the VW in the R-Method is thus taken to be complete for the Run 1 datasets. Going forward for the future runs, it may be necessary to include the proper VW envelope in the fits instead of randomizing out the effect.
 
 
 
@@ -517,18 +515,21 @@ For final checks...
   \hline
 \end{tabular*}
 \caption[]{Means and RMS' of R values for 50 different random seeds for three of the Run~1 datasets, without the $T_{VW}$ randomization and including the VW in the fit, versus with the $T_{VW}$ randomization and the VW terms excluded from the fit.}
-\label{tab:fVW_Randomization}
+\label{tab:fVW_Randomization_Rvalues}
 \end{table}
 
 
 
-
-
+\begin{figure}[]
+    \centering
+    \includegraphics[width=.6\textwidth]{Rdiffs_noRWave}
+    \caption[]{R values with the VW included in the fit versus no VW terms but with the additional randomization. The results show no residual R-Wave.}
+    \label{fig:residualRWaveCheck}
+\end{figure}
 
 
 
 \printbibliography
-
 
 
 % \begin{figure}[]
