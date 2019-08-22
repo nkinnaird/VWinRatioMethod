@@ -152,7 +152,7 @@ where $f_{c}$ is the cyclotron frequency, $f_{y}$ is the vertical betatron frequ
     \label{fig:Pvalue_Endgame}
 \end{figure}
 
-
+\clearpage
 
 \section{On a resonance in the 60h and Endgame datasets}
 
@@ -272,8 +272,9 @@ Therefore a more data-like Toy MC simulation was built which included the FR eff
 \label{fig:resonance}
 \end{figure}
 
+\clearpage
 
-With yet another Toy MC, the resonances in the VW amplitude can be seen as a function of the time shift over the VW period, \figref{fig:JamesAnalytic_Avw_Resonances}. As shown the resonances appear at integer steps in the time shift over the VW period. Let's determine why these resonances appear by looking at the ratio fit function more carefully as a function of the time shift. The explicit ratio function is given as \cite{60hReport}
+With yet another Toy MC, the resonances in the VW amplitude can be seen in \figref{fig:JamesAnalytic_Avw_Resonances} as a function of the time shift over the VW period, $\Delta/T_{VW}$. As shown the resonances appear at integer steps in $\Delta/T_{VW}$. Let's determine why these resonances appear by looking at the ratio fit function more carefully as a function of the time shift. The explicit ratio function is given as \cite{60hReport}
     \begin{align}
         R(t) = \frac{2 A \cos(\omega_{a}t) (1 - \cos{(\omega_{a}\Delta)})} {4 + 2A \cos(\omega_{a}t) (1 + \cos{(\omega_{a}\Delta)} )},
     \end{align}
@@ -289,7 +290,9 @@ where \wa has simply been replaced by $\omega_{VW}$. Looking at the numerator of
     \begin{align}
         \Delta = 2n\pi/\omega_{VW} = n \cdot T_{VW},
     \end{align}
-at integer steps in the time shift over the VW period. This can be seen in \figref{fig:ratiofunc_analytic}. When looking at the real simulated data however, including the effects of the FR, as shown in \figref{fig:ratiofunc_data}, it can be seen that the real ratio data does not in fact go to zero. This is in fact the root cause for the VW amplitude resonances. Because the ratio function is going to zero at points where the real data is non-zero, the VW amplitude in the fit function explodes to compensate for the wrong fit function form. Note that this large amplitude does not mean that there is a correspondingly large wiggle in the data, as this frequency is still close to an even multiple and will thus divide out, but the higher amplitude does produce greater agreement between the data and the fit function. While technically this means that the VW envelope used in the fit function is wrong for fitting the data and the Toy MC, the VW effect is small enough and the frequency is close enough to an even multiple that fits still retain good goodness of fit. To solve this issue, even though the goodness of fit is good since the VW effect is small, either the real envelope should be incorporated in the fit, or the VW should be eliminated. The former is not simple, as the envelope shown in \figref{fig:JamesMC_VW_FR} is complicated. The latter approach was chosen, as will be described in Section~\ref{sec:randomization}.
+at integer steps in $\Delta/T_{VW}$. This can be seen in \figref{fig:ratiofunc_analytic}. When looking at the real simulated data however, including the effects of the FR, as shown in \figref{fig:ratiofunc_data}, it can be seen that the real ratio data does not in fact go to zero. This is the root cause for the VW amplitude resonances. Because the ratio function is going to zero at points where the real data is non-zero, the VW amplitude in the fit function explodes to compensate for the wrong fit function form. The 60h and Endgame datasets sit very near the point $\Delta = T_{a}/2 \approx 5 \cdot T_{VW}$, or $\omega_{VW} \approx 10 \cdot \omega_{a}$, and thus on one of these resonances.
+
+Note that the large resonant amplitude does not mean that there is a correspondingly large wiggle in the data, as it will divide out in the full ratio function. It simply produces greater agreement between the data and the fit function. Technically the VW envelope used in the fit function is wrong for fitting the data and the Toy MC, however the VW effect is small enough in the data and the frequency is close enough to an even multiple of \wa that fits are still good. To solve this resonance and wrong envelope issue, either the real envelope should be incorporated in the fit, or the VW should be eliminated. The former is not so straightforward, as the envelope shown in \figref{fig:JamesMC_VW_FR} is complicated, though it is probably doable. The latter approach was chosen, at the disadvantage of a small hit to the statistical error, as will be described in Section~\ref{sec:randomization}.
 
 
 
