@@ -216,7 +216,7 @@ where $V(t)$ is the vertical waist effect. In the latter, $f(t)$ represents the 
 
 
 
-Therefore a more data-like Toy MC simulation was built which included the FR effect, with the ability to turn off various parts of the simulation. It was found that when the FR was turned off the ratio data was consistent with 0, while when the FR was turned on, the VW effect reappeared with a larger amplitude and a strange beating structure, \figref{fig:JamesMC_VW_FR}. A simpler Mathematica simulation revealed the same behavior with the same beating structure, \figref{fig:MathematicaMC_VW_FR}. So something in the way that the R-Method was interacting with the FR was causing these large amplitudes. Performing the R-Method analysis, but this time with varying time-shifts, revealed the resonance very clearly in both the data and the Mathematica simulation, \figref{fig:resonance}. As shown the running point for 60h and Endgame datasets sits on this resonance, stemming from the fact that $f_{VW} \approx 10 \cdot f_{a}$. This begs the questions as to what exactly is the source of this resonance, and how exactly does the R-Method introduce it in combination with the FR.
+Therefore a more data-like Toy MC simulation was built which included the FR effect and separate calorimeters, with the ability to turn off various parts of the simulation. It was found that when the FR was turned off the ratio data was consistent with 0, while when the FR was turned on, the VW effect reappeared with a larger amplitude and a strange beating structure, \figref{fig:JamesMC_VW_FR}. A simpler Mathematica simulation revealed the same behavior with the same beating structure, \figref{fig:MathematicaMC_VW_FR}. So something in the way that the R-Method was interacting with the FR was causing these large amplitudes. Performing the R-Method analysis, but this time with varying time-shifts, revealed the resonance very clearly in both the data and the Mathematica simulation, \figref{fig:resonance}. As shown the running point for 60h and Endgame datasets sits on this resonance, stemming from the fact that $f_{VW} \approx 10 \cdot f_{a}$. This begs the questions as to what exactly is the source of this resonance, and how exactly does the R-Method introduce it in combination with the FR.
 
 
 \begin{figure}[]
@@ -335,7 +335,10 @@ Note that the large resonant amplitude does not mean that there is a correspondi
 
 
 
-While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa leading to the afore-discuess resonance, the 9d dataset VW frequency is closer to an odd multiple of \wa. From the results shown before this implies that the fitted VW amplitude should be the same between the T-Method and R-Method results. When looking at the VW amplitudes in the R-Method however, I see a systematically smaller amplitude compare to the T-Method, as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. When looking at per calorimeter fits there is no immediately obvious difference in the results, as shown in \figref{fig:9d-PerCalo-VW}. When removing the time randomization of the cyclotron period (used by default in order to reduce effects of the FR of the data, in the T-Method fit as well as the R-Method fit), ...
+While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa leading to the afore-discuess resonance, the 9d dataset VW frequency is closer to an odd multiple of \wa. From the results shown before this implies that the fitted VW amplitude should be the same between the T-Method and R-Method results. When looking at the VW amplitudes in the R-Method however, I see a systematically smaller amplitude compare to the T-Method, as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. When looking at per calorimeter fits there is no immediately obvious difference in the results, as shown in \figref{fig:9d-PerCalo-VW}. When removing the time randomization of the cyclotron period however (used by default in order to reduce effects of the FR of the data, in the T-Method fit as well as the R-Method fit), then a very clear difference in both the VW amplitudes and phases can be seen as shown in \figref{fig:9d_VW_calo_noRand}. Going back to the Toy MC with the separate calorimeters ...
+
+
+\figref{fig:ToyMC_VW_calo_noRand}
 
 
 
@@ -393,7 +396,7 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa le
         \caption{R - T Method phase differences.}
     \end{subfigure}
 \caption[]{9d dataset per calorimeter VW amplitudes (top left) and phases (top right) for T-Method and R-Method fits, and their differences (bottom). Both the amplitudes and phases are systematically different between the two fit types, which is more readily apparent in the difference plots.}
-\label{}
+\label{fig:9d_VW_calo_noRand}
 \end{figure}
 
 
@@ -404,6 +407,7 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa le
         \includegraphics[width=\textwidth]{JamesMC_Avw_Compared}
         \caption{}
     \end{subfigure}%
+    \hspace{5mm}
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesMC_Phivw_Compared}
@@ -415,13 +419,14 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa le
         \includegraphics[width=\textwidth]{JamesMC_Avw_Diff}
         \caption{}
     \end{subfigure}%
+    \hspace{5mm}
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesMC_Phivw_Diff}
         \caption{}
     \end{subfigure}
 \caption[]{}
-\label{}
+\label{fig:ToyMC_VW_calo_noRand}
 \end{figure}
 
 
