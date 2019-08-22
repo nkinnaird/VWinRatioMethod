@@ -273,14 +273,23 @@ Therefore a more data-like Toy MC simulation was built which included the FR eff
 \end{figure}
 
 
-With yet another Toy MC, the resonances in the VW amplitude can be seen as a function of the time shift over the VW period, \figref{fig:JamesAnalytic_Avw_Resonances}. As shown the resonances appear at integer steps in the time shift over the VW period. 
-
--define numerator / ratio here in terms of delta or time shift
--say how it goes to zero at those integer steps
--show that in the function for the first plot
--compare that to the FR data plot which is nonzero
--talk about how the ratio overcompensates the amplitude in that case to account for the effect
--mention that this amplitude going large does not mean that there is a wiggle that size on the data, it's just in the ratio that the effect cancels out still 
+With yet another Toy MC, the resonances in the VW amplitude can be seen as a function of the time shift over the VW period, \figref{fig:JamesAnalytic_Avw_Resonances}. As shown the resonances appear at integer steps in the time shift over the VW period. Let's determine why these resonances appear by looking at the ratio fit function more carefully as a function of the time shift. The explicit ratio function is given as \cite{60hReport}
+    \begin{align}
+        R(t) = \frac{2 A \cos(\omega_{a}t) (1 - \cos{(\omega_{a}\Delta)})} {4 + 2A \cos(\omega_{a}t) (1 + \cos{(\omega_{a}\Delta)} )},
+    \end{align}
+where $\Delta$ is the time shift, typically 
+    \begin{align}
+        \Delta \approx T_{a}/2.
+    \end{align}
+In the Toy MC the \wa oscillation was removed and replaced with a VW oscillation, so the ratio function instead goes as 
+    \begin{align}
+        R(t) = \frac{2 A \cos(\omega_{VW}t) (1 - \cos{(\omega_{VW}\Delta)})} {4 + 2A \cos(\omega_{VW}t) (1 + \cos{(\omega_{VW}\Delta)} )},
+    \end{align}
+where \wa has simply been replaced by $\omega_{VW}$. Looking at the numerator of this function, it can be seen that the numerator goes to zero when 
+    \begin{align}
+        \Delta = 2n\pi/\omega_{VW} = n \cdot T_{VW},
+    \end{align}
+at integer steps in the time shift over the VW period. This can be seen in \figref{fig:ratiofunc_analytic}. When looking at the real simulated data however, including the effects of the FR, as shown in \figref{fig:ratiofunc_data}, it can be seen that the real ratio data does not in fact go to zero. This is in fact the root cause for the VW amplitude resonances. Because the ratio function is going to zero at points where the real data is non-zero, the VW amplitude in the fit function explodes to compensate for the wrong fit function form. Note that this large amplitude does not mean that there is a correspondingly large wiggle in the data, as this frequency is still close to an even multiple and will thus divide out, but the higher amplitude does produce greater agreement between the data and the fit function. While technically this means that the VW envelope used in the fit function is wrong for fitting the data and the Toy MC, the VW effect is small enough and the frequency is close enough to an even multiple that fits still retain good goodness of fit. To solve this issue, even though the goodness of fit is good since the VW effect is small, either the real envelope should be incorporated in the fit, or the VW should be eliminated. The former is not simple, as the envelope shown in \figref{fig:JamesMC_VW_FR} is complicated. The latter approach was chosen, as will be described in Section~\ref{sec:randomization}.
 
 
 
@@ -298,16 +307,18 @@ With yet another Toy MC, the resonances in the VW amplitude can be seen as a fun
     \begin{subfigure}[t]{0.7\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesAnalytic_RatioAmp_noFR}
-        \caption{}
+        \caption{At integer steps in the time shift over the VW period the amplitude of the ratio fit function goes to zero.}
+    \label{fig:ratiofunc_analytic}
     \end{subfigure}%
-
+    \vspace{5mm}
     \begin{subfigure}[t]{0.7\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesAnalytic_RatioAmp_withFR}
-        \caption{}
+        \caption{At integer steps in the time shift over the VW period the amplitude of the ratio data does not go to zero, due to the existence of the FR effect.}
+    \label{fig:ratiofunc_data}
     \end{subfigure}
-\caption[]{}
-\label{}
+\caption[]{The maximum amplitude of the ratio function (top) and Toy MC ratio data (bottom), as a function of the time shift divided by the VW period.}
+\label{fig:ratiofunc_compare}
 \end{figure}
 
 
@@ -358,6 +369,7 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 
 
 \section{Randomizing out the effect...}
+\label{sec:randomization}
 
 2fy randomization results are shonw in \cite{wa_presentation}
 
