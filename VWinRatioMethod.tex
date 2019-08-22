@@ -71,43 +71,6 @@ In the Ratio Method, or R-Method, effects with frequencies which are an even mul
 where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertical betatron frequency with $n$ the quad n value, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table~\ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unnecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets.
 
 
-\begin{table}[]
-\centering
-\setlength\tabcolsep{10pt}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular*}{.8\linewidth}{@{\extracolsep{\fill}}lccc}
-  \hline
-    \multicolumn{4}{c}{\textbf{Run 1 Dataset VW Frequencies}} \\
-  \hline\hline
-    Name & $n$ Value & $f_{VW}$ (MHz) & Multiple of \wa \\
-  \hline
-    60h &  0.108 & 2.3 & 10.04\\
-    9d & 0.120 & 2.04 & 8.87 \\
-    Endgame & 0.108 & 2.3 & 10.04 \\
-  \hline
-\end{tabular*}
-\caption[Run 1 datasets]{$n$ values and VW frequencies for the three Run 1 datasets analyzed for this note. (The Highkick dataset has the same parameters as the 9d.) While technically the VW frequency is changing, the frequencies given here are those determined from the peak of the VW peak in the FFT of the residuals from a five parameter fit to the data, so the numbers are close enough.}
-\label{tab:Run1Datasets}
-\end{table}
-
-
-% \begin{figure}[]
-%     \centering
-%     \includegraphics[width=.8\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x}
-%     \caption[]{Fitted VW amplitude in a Toy MC as a function of the VW frequency divided by the \gmtwo frequency. In red are the fitted amplitudes with a simple five parameter function, and in black are the fitted amplitudes with a three parameter ratio function. The input VW amplitude was 0.05, and the VW effect was constant throughout the Toy MC ``fill.'' There is a slight fall off of the red points due to the effects of the higher frequencies interacting with the bin width causing a reduction in the fitted amplitude; if an integral fit is used then this fall off is eliminated. What can be seen is that for even frequencies the VW effect dies away in the ratio fit, while for odd frequencies it does not.}
-%     \label{fig:VW1x-10x}
-% \end{figure}
-% %  \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}
-
-
-% \begin{figure}[]
-%     \centering
-%     \includegraphics[width=.8\textwidth]{VWRatioDiff}
-%     \caption[]{Plotted is the difference in the maximum value of the ratio with and without a VW function included, as a function of both the amplitude of the VW effect and the VW frequency in units of the \gmtwo frequency, in a toy Monte-Carlo simulation. Note that this is not $\boldsymbol{R}$ the frequency fit parameter, but the actual value of the ratio fit function. The difference reaches a minimum for even multiples of the \gmtwo frequency, where the VW effect divides out almost entirely. The $n = 0.108$ datasets, including the 60h and Endgame datasets, live at the bottom center of this plot, marked by a red circle, where the VW frequency is nearly equal to 10 times the \gmtwo frequency, and the difference in the ratio is approximately \SI{5e-6}{} at 30 $\mu s$. Plot courtesy of James Mott.}
-%     \label{fig:VWRatioDiff}
-% \end{figure}
-
-
 \begin{figure}[]
 \centering
     \begin{subfigure}[t]{0.7\textwidth}
@@ -126,16 +89,35 @@ where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertica
 \end{figure}
 
 
+\begin{table}[]
+\centering
+\setlength\tabcolsep{10pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular*}{.8\linewidth}{@{\extracolsep{\fill}}lccc}
+  \hline
+    \multicolumn{4}{c}{\textbf{Run 1 Dataset VW Frequencies}} \\
+  \hline\hline
+    Name & $n$ Value & $f_{VW}$ (MHz) & Multiple of \wa \\
+  \hline
+    60h &  0.108 & 2.3 & 10.04\\
+    9d & 0.120 & 2.04 & 8.87 \\
+    Endgame & 0.108 & 2.3 & 10.04 \\
+  \hline
+\end{tabular*}
+\caption[Run 1 datasets]{$n$ values and VW frequencies for the three Run 1 datasets analyzed for this note. (The Highkick dataset has the same parameters as the 9d.) While technically the VW frequency is changing, the frequencies given here are those determined from the peak of the VW peak in the FFT of the residuals from a five parameter fit to the data.}
+\label{tab:Run1Datasets}
+\end{table}
+
 
 \begin{figure}[]
 \centering
-    \begin{subfigure}[t]{0.7\textwidth}
+\hspace*{-1.5cm}  
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{FFT_3param_allTimes} % From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
         \caption{All times, \SIrange{30.2}{650}{\micro s}.}
     \end{subfigure}%
-
-    \begin{subfigure}[t]{0.7\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{FFT_3param_earlyTimes} % From file \texttt{/gm2/data/users/nkinnaird/Ratio/60h-FinalProduction/RandSeeds/FitIterations/output-60h-FinalProduction-RandSeeds-1sttest.root} \texttt{FitPass0}.
         \caption{Early times, \SIrange{30.2}{60.2}{\micro s}.}
@@ -147,7 +129,7 @@ where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertica
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=.7\textwidth]{Pvalue_Endgame_noRand}
+    \includegraphics[width=.5\textwidth]{Pvalue_Endgame_noRand}
     \caption[]{P value vs fit start time for the Endgame dataset. A sharp rise can be seen at early times. A similar trend, though less severe, can be seen for the 60h dataset.}
     \label{fig:Pvalue_Endgame}
 \end{figure}
@@ -221,13 +203,13 @@ Therefore a more data-like Toy MC simulation was built which included the FR eff
 
 \begin{figure}[]
 \centering
-    \begin{subfigure}[t]{0.7\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesMC_noFR}
         \caption{Without the FR effect included.}
     \end{subfigure}%
 
-    \begin{subfigure}[t]{0.7\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{JamesMC_withFR}
         \caption{With the FR effect included.}
@@ -331,16 +313,10 @@ Note that the large resonant amplitude does not mean that there is a correspondi
 \clearpage
 
 
-\section{Reduction in calorimeter sum VW amplitude in the 9d Dataset}
+\section{Per calorimeter VW results vs calorimeter sum}
 
 
-While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa leading to the afore-discussed resonance, the 9d dataset VW frequency is closer to an odd multiple of \wa. This implies that the fitted VW amplitude should be the same between the T-Method and R-Method results. When looking at the VW amplitudes in the R-Method however, I see a systematically smaller amplitude compared to the T-Method, as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. When looking at per calorimeter fits there is no immediately obvious difference in the results, as shown in \figref{fig:9d-PerCalo-VW}. When removing the time randomization of the cyclotron period however (used by default in order to reduce the FR effect in the data, in the T-Method fit as well as the R-Method fit), then a very clear difference in both the VW amplitudes and phases can be seen as shown in \figref{fig:9d_VW_calo_noRand}. Going back to the Toy MC with the separate calorimeters, something similar can be seen, \figref{fig:ToyMC_VW_calo_noRand}. While the phase difference plots between the two show something different, the amplitude difference plots show a slightly similar shape. In both cases, the R-Method fits tend to flatten out the per calorimeter VW amplitudes as a function of calorimeter. Since the VW phases in general run from 0 to $2\pi$, the VW amplitude of the calorimeter sum data is less than any single calorimeter. The flattening out of the VW amplitudes in the R-Method as a function of calorimeter then means that an even greater cancellation is done, leading to the systematically smaller amplitude.
-
-
-Currently the best guess for the source of this flattening out is that 
-
-
--source of this flattening out exactly??
+While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa leading to the afore-discussed resonance, the 9d dataset VW frequency is closer to an odd multiple of \wa. This implies that the fitted VW amplitude should be the same between the T-Method and R-Method results. When looking at the VW amplitudes in the R-Method however, the VW amplitude is systematically smaller compared to the T-Method, as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. When looking at per calorimeter fits there is no immediately obvious difference in the results, as shown in \figref{fig:9d-PerCalo-VW}. When removing the time randomization of the cyclotron period however (used by default in order to reduce the FR effect in the data, in the T-Method fit as well as the R-Method fit), then a very clear difference in both the VW amplitudes and phases can be seen as shown in \figref{fig:9d_VW_calo_noRand}. Going back to the Toy MC with the separate calorimeters, something similar can be seen, \figref{fig:ToyMC_VW_calo_noRand}. While the phase difference plots between the two show something different, the amplitude difference plots show a slightly similar shape. In both cases, the R-Method fits tend to flatten out the per calorimeter VW amplitudes as a function of calorimeter. Since the VW phases in general run from 0 to $2\pi$, the VW amplitude of the calorimeter sum data is less than any single calorimeter. The flattening out of the VW amplitudes in the R-Method as a function of calorimeter then means that an even greater cancellation occurs, leading to the systematically smaller amplitude. The VW effect is inherently tied to the fast rotation, leading to different measurements per calorimeter. The flattening out of those measurements in the R-Method fits as compared to the T-Method fits is not well understood, but must derive from the time-shifting of the FR data, similar to the resonance effect described previously. Regardless, whatever the source, the VW effect is removed from the data as described in Section~\ref{sec:randomization}, and this problem is eliminated.
 
 
 \begin{figure}[]
