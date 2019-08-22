@@ -331,33 +331,13 @@ Note that the large resonant amplitude does not mean that there is a correspondi
 \clearpage
 
 
+\section{Reduction in calorimeter sum VW amplitude in the 9d Dataset}
 
 
 
-
-\section{9d Dataset - a different problem}
-
-
-While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, in the 9d the frequency is closer to an odd multiple, or $\omega_{VW} \approx 8.87 \cdot \omega_{a}$ at $t = \infty$. With what I've shown so far, I expect the VW signal to be easily fittable with an amplitude equal to that from the T method results. Looking at per calo fit results in \figref{fig:9d-PerCalo-VW}, the VW phases and amplitudes are consistent between the T method and ratio method results. As shown there are no observable differences. When I look at the fits to the sum of the calorimeter data however, I see a systematically smaller VW amplitude in the ratio fit results as compared to the T method results. This is true for all random seeds as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. While I expect a reduction in the VW amplitude from per calo fits to the calorimeter sum fit, as the phases go from 0-2$\pi$ around the ring, I still expect the amplitudes to be consistent between the T method and ratio method. If I take calorimeters adjacent to each other around the ring versus calorimeters separated from each other, then I see the behaviour. So what seems to be happening is that there is a cancellation when adding the calorimeters together in the ratio method that doesn't occur in the T method. That is something I don't understand, and can't come up with a reason why that should happen. I'm not sure if this is at all related to the previously discussed problem or not, whether it's another symptom or something else strange. 
+While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa leading to the afore-discuess resonance, the 9d dataset VW frequency is closer to an odd multiple of \wa. From the results shown before this implies that the fitted VW amplitude should be the same between the T Method and Ratio Method results. When looking at the VW amplitudes in the Ratio Method however, I see a systematically smaller amplitude compare to the T method, as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. When looking at per calorimeter fits there is no immediately obvious difference in the results, as shown in \figref{fig:9d-PerCalo-VW}. When removing the time randomization of the cyclotron period (used by default in order to reduce effects of the FR of the data, in the T Method fit as well as the Ratio Method fit), ...
 
 
-
-\begin{figure}[]
-\centering
-    \begin{subfigure}[]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Phases}
-        \caption{VW phases per calo in the 9d dataset.}
-    \end{subfigure}% %you need this % here to add spacing between subfigures
-    \begin{subfigure}[]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Amps}
-        \caption{VW amplitudes per calo in the 9d dataset.}
-    \end{subfigure}
-\caption[]{Red points are T method results and black points are ratio method results. In the ratio fits, the VW frequencies and lifetimes are fixed to those from the T method results.}
-\label{fig:9d-PerCalo-VW}
-\end{figure}
-% \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/SingleIteration/temptests/CaloFits-VW-w-tau-fixed}
 
 \begin{figure}[]
     \centering
@@ -368,11 +348,49 @@ While in the 60h and Endgame datasets the VW frequency is nearly 10 times \wa, i
 % \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/RandomSeeds/tests\_with\_VW/fixed-vw-w-tau}
 
 
+\begin{figure}[]
+\centering
+    \begin{subfigure}[]{0.46\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Amps}
+        \caption{VW amplitudes.}
+    \end{subfigure}%
+    \hspace{1cm}
+    \begin{subfigure}[]{0.46\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{9d-CaloFits-VW-Phases}
+        \caption{VW phases.}
+    \end{subfigure}
+\caption[]{VW amplitudes (left) and phases (right) per calorimeter in the 9d dataset with $T_{c}$ randomization included. Red points are T Method results and black points are Ratio Method results. In the ratio fits, the VW frequencies and lifetimes are fixed to those from the T method results.}
+\label{fig:9d-PerCalo-VW}
+\end{figure}
+% \texttt{/gm2/data/users/nkinnaird/Ratio/9d-FinalProduction/SingleIteration/temptests/CaloFits-VW-w-tau-fixed}
 
 
 
-\section{Randomizing out the effect...}
+
+
+
+\clearpage
+
+
+ Looking at per calo fit results in \figref{fig:9d-PerCalo-VW}, the VW phases and amplitudes are consistent between the T method and ratio method results. As shown there are no observable differences. When I look at the fits to the sum of the calorimeter data however, I see a systematically smaller VW amplitude in the ratio fit results as compared to the T method results. This is true for all random seeds as shown in \figref{fig:vw-fixed-w-tau-9d-randseeds}. While I expect a reduction in the VW amplitude from per calo fits to the calorimeter sum fit, as the phases go from 0-2$\pi$ around the ring, I still expect the amplitudes to be consistent between the T method and ratio method. If I take calorimeters adjacent to each other around the ring versus calorimeters separated from each other, then I see the behaviour. So what seems to be happening is that there is a cancellation when adding the calorimeters together in the ratio method that doesn't occur in the T method. 
+
+
+
+
+
+
+
+
+
+
+
+\section{Randomizing out the VW}
 \label{sec:randomization}
+
+
+-start off by talking briefly about Tc randomization and some binning maybe
 
 2fy randomization results are shonw in \cite{wa_presentation}
 
