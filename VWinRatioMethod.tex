@@ -57,34 +57,35 @@
 \maketitle
 
 \begin{abstract}
-This note details the handling of the vertical waist (VW) effect in the Ratio Method analysis. The 60h and Endgame datasets lie on resonances where $\omega_{VW} \approx 10 \cdot \omega_{a}$, which in combination with the fast rotation (FR) effect leads to inflated VW amplitudes in the Ratio Method, whereas one might originally assume that the VW effect can be neglected from the analysis. In the 9d dataset (not on a resonance) it was found that the Ratio Method flattened out the VW amplitudes as a function of calorimeter, leading to greater cancellation and a systematically lower calorimeter sum VW amplitude as compared to the T-Method. The solution used to eliminate these problems was to randomize out the VW (in tandem with the FR) in the data so that the effect can be acceptably omitted from the fit.
+This note details the handling of the vertical waist (VW) effect in the Ratio Method, or R-Method, analysis. The 60h and Endgame datasets lie on resonances where $\omega_{VW} \approx 10 \cdot \omega_{a}$, which in combination with the fast rotation (FR) effect leads to inflated VW amplitudes in the R-Method fits. In the 9d dataset (not on a resonance) it was found that the R-Method flattened out the VW amplitudes as a function of calorimeter, leading to greater cancellation and a systematically lower calorimeter sum VW amplitude as compared to the T-Method. The solution used to eliminate these problems was to randomize out the VW (in tandem with the FR) in the data so that the effect can be acceptably omitted from the fit.
 \end{abstract}
 
 
 \section{Introduction}
 
-In the Ratio Method, or R-Method, effects with frequencies which are an even multiple of \wa divide out completely, as shown in \figref{fig:ToyMCVW}. The VW frequency is given by
+The VW frequency is given by\footnote{The second relation comes from replacing the $n$ value using the relations $f_{x} = \sqrt{1-n}f_{c}$ and $f_{cbo} = f_{c}-f_{x}$, where $f_{x}$ is the horizontal betatron frequency.}
     \begin{align} \label{eq:VWfreqKappa}
         f_{VW} &= f_{c} - 2 \cdot f_{y}, \\
                &= f_{c} - 2 \cdot \boldsymbol{\kappa_{VW}} \cdot f_{cbo}\sqrt{2f_{c}/(\boldsymbol{\kappa_{VW}} \cdot f_{cbo})-1},
     \end{align}
-where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertical betatron frequency with $n$ the quad n value, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the theoretical frequency as found by both the tracking and \wa analysis \cite{cbofrequency}. Table~\ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. As shown the VW frequency for both the 60h and Endgame datasets are very close to an even multiple of \wa. This implies that the VW effect should be divided out in the data, unobservable, and therefore unnecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value of the fit for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets.
+where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertical betatron frequency with $n$ the quad $n$ value, and $f_{cbo}$ is the CBO frequency. The time-dependence of the VW effect is excluded and the fit parameter is $\boldsymbol{\kappa_{VW}}$, a percent level adjustment factor to the CBO frequency justified by both the tracking and \wa analyses \cite{cbofrequency}. Table~\ref{tab:Run1Datasets} gives the VW frequencies for the Run~1 datasets. The VW frequency for the 60h and Endgame datasets is very close to an even multiple of \wa. In the R-Method, effects with frequencies which are an even multiple of \wa divide out completely, as shown in \figref{fig:ToyMCVW}. This implies that the VW effect should be divided out in the real data and therefore unnecessary in the fit function. However, when looking at the FFT of ratio fit residuals in \figref{fig:FFT_3param}, a VW peak can be seen at early times in the 60h dataset. \figref{fig:Pvalue_Endgame} shows a fit start scan for the p value for the Endgame dataset, where the p value rises rapidly at early times. These two pieces of evidence point to the necessary inclusion of the VW in the ratio fit, even for even multiple frequency datasets, which is a puzzle considering the earlier implication and Toy MC results.
 
 
 \begin{figure}[]
 \centering
     \begin{subfigure}[t]{0.7\textwidth}
         \centering
+        \hspace*{-1cm}  
         \includegraphics[width=\textwidth]{Fitted_Avw_Vs_Wvw_1x-10x} % \texttt{/gm2/app/users/nkinnaird/RatioAnalysis/gm2Dev\_v9\_21\_03/srcs/gm2analyses/macros/RatioMacro/ToyMC/VW\_MC/OnlyVW/grid/ratioToyHists-OnlyVW-1x-10x-37iters.root}
-        \caption{Fitted VW amplitude with a five parameter function in red and a three parameter ratio function in black. The input amplitude was 0.05. The slight fall off of the red points is due to the high frequencies interacting with the bin widths; performing an integral fit removes this trend.}
+        \caption{Fitted VW amplitude with a five parameter function in red and a three parameter ratio function in black to Toy MC data. The input amplitude was 0.05. The slight fall off of the red points is due to the high frequencies relative to the bin widths leading to a underestimate of the amplitude; performing an integral fit removes this trend.}
     \end{subfigure}%
 
     \begin{subfigure}[t]{0.7\textwidth}
         \centering
         \includegraphics[width=\textwidth]{VWRatioDiff}
-        \caption{The difference in the maximum value of the ratio (not the fit parameter \textbf{R}), as a function of VW frequency and amplitude.The difference in the ratio is approximately \SI{5e-6}{} at \mus{30}.}
+        \caption{The difference in the maximum value of the ratio Toy MC data, as a function of VW frequency and amplitude.}
     \end{subfigure}
-\caption[]{Two separate Toy MC simulations showing the division of a VW effect as a function of it's frequency in units of \wa. For even multiple frequencies the effect dies away while for odd multiples it is preserved.}
+\caption[]{Two separate Toy MC simulations showing the reduction of a VW effect as a function of it's frequency in units of \wa. For even multiple frequencies the effect dies away while for odd multiples it is preserved.}
 \label{fig:ToyMCVW}
 \end{figure}
 
@@ -104,7 +105,7 @@ where $f_{c}$ is the cyclotron frequency, $f_{y} = \sqrt{n}f_{c}$ is the vertica
     Endgame & 0.108 & 2.3 & 10.04 \\
   \hline
 \end{tabular*}
-\caption[Run 1 datasets]{$n$ values and VW frequencies for the three Run 1 datasets analyzed for this note. (The Highkick dataset has the same parameters as the 9d.) While technically the VW frequency is changing, the frequencies given here are those determined from the peak of the VW peak in the FFT of the residuals from a five parameter fit to the data.}
+\caption[Run 1 datasets]{$n$ values and VW frequencies for the three Run 1 datasets analyzed for this note. (The Highkick dataset has the same parameters as the 9d.) While technically the VW frequency is changing, the frequencies given here are those determined from the VW peak in the FFT of the residuals from a five parameter fit to the data.}
 \label{tab:Run1Datasets}
 \end{table}
 
